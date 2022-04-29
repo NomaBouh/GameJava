@@ -19,9 +19,6 @@ public class Mouse implements MouseListener, MouseMotionListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         switch (Gamestates.state){
-            case MENU:
-                gamePanel.getGame().getMenu().mouseClicked(e);
-                break;
             case PLAYING:
                 gamePanel.getGame().getPlaying().mouseClicked(e);
                 break;

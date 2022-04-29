@@ -14,6 +14,7 @@ public class LoadSave {
     public static final String PLAYER_ATLAS = "player_sprites.png";//mettre le nom du ficjiers sprites joueurs une fois fini
     public static final String LEVEL_ATLAS = "outside_sprites.png";//mettre le nom du ficjiers sprites joueurs une fois fini
     public static final String LEVEL_ONE_DATA = "level_one_data.png";//mettre le nom du ficjiers sprites joueurs une fois fini
+    public static final String MENU_BUTTONS = "menuButtons.png";//fichier image des bouttons
     public static final String LEVEL_LEFROID = "Sprit niveau leFroid.png";//spritelv EVANN
     public static final String LEVEL_LEFROID_PLAY = "Niveau_LEFROID.png";//Lvl EVANN
 
