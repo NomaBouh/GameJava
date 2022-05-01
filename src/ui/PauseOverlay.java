@@ -1,6 +1,7 @@
 package ui;
 
 import main.Game;
+import utilz.Constantsa.*;
 import utilz.LoadSave;
 
 import java.awt.*;
@@ -39,6 +40,9 @@ public class PauseOverlay {
 
     public void update(){
 
+        musicButton.update();
+        sfxButton.update();
+
     }
 
     public void draw(Graphics g){
@@ -57,14 +61,39 @@ public class PauseOverlay {
     }
 
     public void mouseMoved(MouseEvent e){
-
+        musicButton.setMouseOver(false);
+        sfxButton.setMouseOver(false);
+        if(isIn(e,musicButton))
+            musicButton.setMouseOver(true);
+        else if(isIn(e,sfxButton))
+            sfxButton.setMouseOver(true);
     }
 
     public void mouseReleased(MouseEvent e){
+        if(isIn(e,musicButton)) {
+            if (musicButton.isMousePressed()) {
+                musicButton.setMuted(!musicButton.isMuted());
 
+            }
+        }else if(isIn(e,sfxButton)){
+            if ((sfxButton.isMousePressed()))
+                sfxButton.setMuted(!sfxButton.isMuted());
+        }
+
+        musicButton.resetBools();
+        sfxButton.resetBools();
     }
 
     public void mousePressed(MouseEvent e){
+        if(isIn(e,musicButton))
+            musicButton.setMousePressed(true);
+        else if(isIn(e,sfxButton))
+            sfxButton.setMousePressed(true);
+
+    }
+
+    private boolean isIn(MouseEvent e, PauseButton b){
+        return b.getBounds().contains(e.getX(),e.getY());
 
     }
 }
