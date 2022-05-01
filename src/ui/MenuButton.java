@@ -21,10 +21,10 @@ public class MenuButton {
         this.rowIndex = rowIndex;
         this.state = state;
         loadImgs();
-        inirBounds();
+        initBounds();
     }
 
-    private void inirBounds() {
+    private void initBounds() {
         bounds = new Rectangle(xPos-xOffsetCenter,yPos,B_WIDTH,B_HEIGTH);
     }
 

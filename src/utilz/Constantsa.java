@@ -7,7 +7,7 @@ public class Constantsa {
     public static class UI{
         public static class Buttons{
             public static final int B_WIDTH_DEFAULT = 140;
-            public static final int B_HEIGTH_DEFAULT = 53;
+            public static final int B_HEIGTH_DEFAULT = 56;
             public static final int B_WIDTH = (int)(B_WIDTH_DEFAULT* Game.SCALE);
             public static final int B_HEIGTH = (int)(B_HEIGTH_DEFAULT* Game.SCALE);
         }
