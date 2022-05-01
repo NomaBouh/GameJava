@@ -13,7 +13,7 @@ public class Player extends Entity{
     private int playerAction = IDLE;
     private boolean moving = false,attacking = false;
     private boolean left,up, right, down, jump;
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 1.0f * Game.SCALE;
     private int[][] lvData;
     private float xDrawOffset = 21* Game.SCALE; //ici le 21 est du à la distace entre le coin du sprite et de sa hit box.
     // il fait prendre en compte que lorsque l'on changera avec notre design a nous il faudra le changer
@@ -30,7 +30,7 @@ public class Player extends Entity{
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
-        initHitbox(x,y,20*Game.SCALE,20*Game.SCALE);
+        initHitbox(x,y,(int)(20*Game.SCALE),(int)(20*Game.SCALE));
     }
 
     public void update(){

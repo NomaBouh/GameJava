@@ -19,6 +19,10 @@ public class LoadSave {
     public static final String LEVEL_LEFROID = "Sprit niveau leFroid.png";//spritelv EVANN
     public static final String LEVEL_LEFROID_PLAY = "Niveau_LEFROID.png";//Lvl EVANN
 
+    public static final String PAUSE_BCK = "pause_menu.png";
+    public static final String SOUND_BUTTONS = "sound_button.png";
+    public static final String URM_BUTTONS = "urm_button.png";
+
     public static BufferedImage GetSpriteAtlas(String fileName){
         BufferedImage img = null;
         InputStream is = LoadSave.class.getResourceAsStream("/" + fileName); //mettre le nom du ficjiers sprites joueurs une fois fini
