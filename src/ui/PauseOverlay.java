@@ -8,18 +8,35 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
-import static utilz.Constantsa.UI.PauseButtons.SOUND_SIZE;
+import static utilz.Constantsa.UI.PauseButtons.*;
+import static utilz.Constantsa.UI.UrmButton.*;
 
 public class PauseOverlay {
 
     private BufferedImage background;
     private int bgX, bgY, bgW, bgH;
     private SoundButton musicButton, sfxButton;
+    private UrmButton menuB, replayB, unpauseB;
 
     public PauseOverlay(){
 
         loadBck();
         creatSoundButton();
+        creatUrmButton();
+    }
+
+    private void creatUrmButton() {
+        int menuX = (int)(313*Game.SCALE);
+        int replayX = (int)(387*Game.SCALE);
+        int unpauseX = (int)(461*Game.SCALE);
+        int bY = (int)(325*Game.SCALE);
+
+
+        menuB = new UrmButton(menuX,bY,URM_SIZE,URM_SIZE,2);
+        replayB = new UrmButton(replayX,bY,URM_SIZE,URM_SIZE,1);
+        unpauseB = new UrmButton(unpauseX,bY,URM_SIZE,URM_SIZE,0);
+
+
     }
 
     private void creatSoundButton() {
@@ -35,7 +52,8 @@ public class PauseOverlay {
         bgW = (int)(background.getWidth()* Game.SCALE);
         bgH = (int)(background.getHeight()* Game.SCALE);
         bgX = Game.GAME_WIDTH/2-bgW/2;
-        bgY = (int) (50 * Game.SCALE);
+        bgY = (int) (25 * Game.SCALE);
+
     }
 
     public void update(){
@@ -43,16 +61,24 @@ public class PauseOverlay {
         musicButton.update();
         sfxButton.update();
 
+        menuB.update();
+        replayB.update();
+        unpauseB.update();
+
     }
 
     public void draw(Graphics g){
         //bck
-        g.drawImage(background, bgX, bgY, bgW, bgW, null);
+        g.drawImage(background, bgX, bgY, bgW, bgH, null);
 
         //buttons
         //Sounds
         musicButton.draw(g);
         sfxButton.draw(g);
+
+        menuB.draw(g);
+        replayB.draw(g);
+        unpauseB.draw(g);
 
     }
 
