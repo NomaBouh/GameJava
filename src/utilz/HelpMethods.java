@@ -15,16 +15,21 @@ public class HelpMethods {
         return false;
     }
 
-    private static boolean IsSolid(float x,float y, int[][] lvData){
-        if (x<0 || x >=Game.GAME_WIDTH)
+    private static boolean IsSolid(float x,float y, int[][] lvData) {
+        int maxWitdth = lvData[0].length * Game.TILES_SIZE;
+        if (x < 0 || x >= maxWitdth)
             return true;
-        if (y<0 || y>= Game.GAME_HEIGHT)
+        if (y < 0 || y >= Game.GAME_HEIGHT)
             return true;
 
         float xIndex = x / Game.TILES_SIZE;
-        float yIndex = y/Game.TILES_SIZE;
+        float yIndex = y / Game.TILES_SIZE;
 
-        int value = lvData[(int) yIndex][(int) xIndex];
+        return IsTileSolid((int)xIndex,(int)yIndex,lvData);
+    }
+
+    public static boolean IsTileSolid(int xTile, int yTile, int[][] lvData){
+        int value = lvData[(int) yTile][(int) xTile];
 
         if (value >= 48 || value < 0 || value !=11 ) // 11 ici correspond à la case de vide dans la sheet de sprite monde
             return true;
@@ -64,5 +69,29 @@ public class HelpMethods {
             if(!IsSolid(hitbox.x + hitbox.width, hitbox.y+ hitbox.height +1, lvData))
                 return false;
         return true;
+    }
+
+    public static boolean IsFloor(Rectangle2D.Float hitbox, float xSpeed, int[][] lvData){
+        return IsSolid(hitbox.x+xSpeed ,hitbox.y+ hitbox.height+1,lvData);
+    }
+
+    public static boolean RoadToOnePiece(int xStart, int xEnd, int y, int[][] lvData){
+        for (int i = 0; i<xEnd-xStart; i++) {
+            if (IsSolid(xStart + i, y, lvData))
+                return false;
+            if (!IsSolid(xStart + i, y+1, lvData))
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean noObstacle(int[][] lvData, Rectangle2D.Float hitBox, Rectangle2D.Float hitBox1, int tileY) {
+        int XTile = (int)(hitBox.x/Game.TILES_SIZE);
+        int XTile1 = (int)(hitBox1.x/Game.TILES_SIZE);
+
+        if(XTile > XTile1)
+            return RoadToOnePiece(XTile1,XTile,tileY,lvData);
+        else
+            return RoadToOnePiece(XTile,XTile1,tileY,lvData);
     }
 }
